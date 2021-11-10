@@ -2,81 +2,6 @@ const db = require('./database.js');
   //const bcrypt = require('bcryptjs');
 const Controller = {};
 
-Controller.getPokemon = (req, res, next) => {
-  const qString =  'SELECT pokemon.name, pokemon.link FROM pokemon';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-
-      //console.log(data.rows);
-      res.locals.pokemon = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getPokemon',
-        message: {err: 'Controller.getPokemon: Error'}
-      });
-    });
-};
-
-Controller.getInstruments = (req, res, next) => {
-  const qString =  'SELECT instruments.name, instruments.link FROM instruments';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-      res.locals.instruments = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getInstruments',
-        message: {err: 'Controller.getInstruments: Error'}
-      });
-    });
-};
-
-Controller.getGaffes = (req, res, next) => {
-  const qString =  'SELECT gaffes.name, gaffes.link FROM gaffes';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-      // console.log(data.rows)
-      res.locals.gaffes = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getGaffes',
-        message: {err: 'Controller.getGaffes: Error'}
-      });
-    });
-};
-
-Controller.getPresets = (req, res, next) => {
-  const qString =  'SELECT presets.presetname, presets.list FROM presets';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-      res.locals.gaffes = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getGaffes',
-        message: {err: 'Controller.getGaffes: Error'}
-      });
-    });
-};
-
 // Controller.savePreset = (req, res, next) => {
   
 //   req.body = ['Connor','charmander','whip','two_hours_later','xylophone','marimba','zither','gta','what_are_those','recorder','vulpix','fbi','ash_boogy'];
@@ -143,6 +68,7 @@ Controller.savePrimary = (req, res, next) => {
   //unable to do multiple queries at the same time so I need to create
   //the primary key in the preset table for better username usage
   const testing = req.body.newPreset
+  console.log('req.body.newPreset', testing)
   const names = [testing[0], testing[14]]
   let qString = "Insert INTO presets (name, username) Values ($1, $2)";
   db.query(qString, names)

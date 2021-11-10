@@ -23,9 +23,9 @@ describe ("Database controllers", () => {
 
     }
   }
-  error = new Error("Test Error"),
+  //error = new Error("Test Error"),
   res = {},
-  expectedResult;
+  //expectedResult;
 
   beforeAll((done) => {
     // Anything that should happen before all tests below

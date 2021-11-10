@@ -1,108 +1,59 @@
-const db = require('./database.js');
-// TODO import: const db = require('.databaseFuncs.js')
+/* const db = require('./database.js');
 
-const Controller = {};
+const DatabaseFuncs = {};
 
-Controller.getPokemon = (req, res, next) => {
+DatabaseFuncs.getPokemon = () => {
   const qString =  'SELECT pokemon.name, pokemon.link FROM pokemon';
-
-  // TODO: Replace with db.getPokemon()
   db.query(qString)
-    //grabbing characters from the DB
     .then(data => {
-
-      //console.log(data.rows);
-      res.locals.pokemon = data.rows;
-      return next();
+      return data
     })
     .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getPokemon',
-        message: {err: 'Controller.getPokemon: Error'}
-      });
+      return Error;
     });
 };
 
-Controller.getInstruments = (req, res, next) => {
+DatabaseFuncs.getInstruments = () => {
   const qString =  'SELECT instruments.name, instruments.link FROM instruments';
-
-  // TODO: Replace with db.getInstruments()
   db.query(qString)
-    //grabbing characters from the DB
     .then(data => {
-      res.locals.instruments = data.rows;
-      return next();
+      return data
     })
     .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getInstruments',
-        message: {err: 'Controller.getInstruments: Error'}
-      });
+      return Error;
     });
 };
 
-Controller.getGaffes = (req, res, next) => {
+DatabaseFuncs.getGaffes = (req, res, next) => {
   const qString =  'SELECT gaffes.name, gaffes.link FROM gaffes';
 
-  // TODO: Replace with db.getGaffes()
+  // TODO: Replace with dbFuncs.getGaffes()
   db.query(qString)
-    //grabbing characters from the DB
     .then(data => {
-      // console.log(data.rows)
-      res.locals.gaffes = data.rows;
-      return next();
+      return data
     })
     .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getGaffes',
-        message: {err: 'Controller.getGaffes: Error'}
-      });
+      return Error;
     });
 };
 
-Controller.getPresets = (req, res, next) => {
+
+DatabaseFuncs.getPresets = (req, res, next) => {
   const qString =  'SELECT presets.presetname, presets.list FROM presets';
 
-  // TODO: Replace with db.getPresets()
+  // TODO: Replace with dbFuncs.getPresets()
   db.query(qString)
     //grabbing characters from the DB
     .then(data => {
-      res.locals.gaffes = data.rows;
-      return next();
+      return data
     })
     .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getGaffes',
-        message: {err: 'Controller.getGaffes: Error'}
-      });
+      return Error;
     });
 };
 
-// Controller.savePreset = (req, res, next) => {
-  
-//   req.body = ['Connor','charmander','whip','two_hours_later','xylophone','marimba','zither','gta','what_are_those','recorder','vulpix','fbi','ash_boogy'];
-//   let qString =  'INSERT INTO presets VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)';
-//   // qString += `'${arr.shift()}','`;
-//   // qString = qString + arr.join('#') + ')';
-//   console.log('trying to save......')
-//   db.query(qString, req.body)
-//     .then(data => {
-//       return next();
-//     })
-//     .catch(err => {
-//       console.log("ERROR!!!");
-//       return next({
-//         log: 'Error in Controller.getGaffes',
-//         message: {err: 'Controller.getGaffes: Error'}
-//       });
-//     });
-// };
 
-Controller.getALL = (req, res, next) => {
+DatabaseFuncs.getAll = (req, res, next) => {
   console.log(req.body);
   console.log('currently in the controller get ALl');
   function formatData(SQL) {
@@ -126,7 +77,7 @@ Controller.getALL = (req, res, next) => {
         //each object has a name and link key
   }
 
-  // TODO: Replace with db.getAll()
+  // TODO: Replace with dbFuncs.getAll()
   let qString = `select presetsongs.presetName, STRING_AGG(presetsongs.sound, '#') AS names, STRING_AGG(soundLinks.link, '#') AS links from presetsongs
   Left Join soundlinks
   ON presetsongs.sound = soundLinks.sound
@@ -150,7 +101,7 @@ Controller.savePrimary = (req, res, next) => {
   //the primary key in the preset table for better username usage
   const testing = req.body.newPreset
   const names = [testing[0], testing[14]]
-  // TODO: Replace with db.savePrimary(names)
+  // TODO: Replace with dbFuncs.savePrimary(names)
   let qString = "Insert INTO presets (name, username) Values ($1, $2)";
   db.query(qString, names)
     .then(() => {
@@ -188,7 +139,7 @@ Controller.login = (req, res, next) => {
   console.log({'username': username, 'password':password});
   let qString =  'select * from users Where name = $1 AND password = $2'; //grab user presets while matching for username/pw
   console.log('trying to save......Adam')
-  // TODO: Replace with db.login(username, password)
+  // TODO: Replace with dbFuncs.login(username, password)
   db.query(qString, [username, password])
     .then((data) => {
       res.locals.loginStatus = true;
@@ -209,7 +160,7 @@ Controller.signup = (req, res, next) => {
   console.log(req.body.allInfo);
   let qString =  "Insert INTO users (name, password) Values ($1, $2);" //inserting username, pw, preset options
   console.log('trying to save......Adam')
-  // TODO: Replace with db.signup(username, password)
+  // TODO: Replace with dbFuncs.signup(username, password)
   db.query(qString, [username, password])
     .then(() => {
       return next();
@@ -224,4 +175,5 @@ Controller.signup = (req, res, next) => {
 };
 
 
-module.exports = Controller;
+module.exports = DatabseFuncs;
+*/

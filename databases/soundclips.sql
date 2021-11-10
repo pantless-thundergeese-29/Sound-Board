@@ -4,7 +4,6 @@
 -- Password ----> 7nX6UUwB6gHXtEweTcwOjYXX2bm4ZtEW
 -- Server -----> fanny.db.elephantsql.com
 
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -15,6 +14,15 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+CREATE TABLE public.users (
+  "_id" serial NOT NULL,
+  "name" varchar NOT NULL,
+  "password" varchar NOT NULL,
+  CONSTRAINT "users_pk" PRIMARY KEY ("_id")
+) WITH (
+  OIDS=FALSE
+);
 
 CREATE TABLE public.pokemon (
   "_id" serial NOT NULL,
@@ -45,7 +53,6 @@ CREATE TABLE public.gaffes (
 
 CREATE TABLE public.presets (
   "name" serial NOT NULL,
-  
 )
 
 CREATE TABLE public.presets (
@@ -224,12 +231,5 @@ ADD username varchar;
 ALTER TABLE presets
 ADD username varchar;
 
-CREATE TABLE public.users (
-  "_id" serial NOT NULL,
-  "name" varchar NOT NULL,
-  "password" varchar NOT NULL,
-  CONSTRAINT "users_pk" PRIMARY KEY ("_id")
-) WITH (
-  OIDS=FALSE
-);
+
 

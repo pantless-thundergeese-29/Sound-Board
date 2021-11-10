@@ -3,26 +3,32 @@
 // <--------BODY --------->
 * {
   font-family: 'Orbitron', sans-serif;
+  color: #172c66;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{    
-  background-color: black;
+body {
+  background-color: #fef6e4;
   padding-top: 60px;
   padding-bottom: 40px;
 }
 
 // <--------HEADER --------->
 header {
-  text-align: center;
-    height: 200px;
-    background: 
-              url('../logo.png') no-repeat;
-              background-blend-mode: multiply;
-              background-size: cover;
+  // text-align: center;
+  margin: 0 auto;
+  height: 200px;
+  background: url('../logo2.png') no-repeat;
+  background-blend-mode: multiply;
+  background-size: contain;
+  background-position: center;
 }
 .container {
-  text-align: center;
   max-width: 500px;
+  // display: flex;
+  // justify-content: center;
   margin: 0 auto;
 }
 
@@ -37,7 +43,14 @@ header {
 }
 
 // <--------SETTINGS GEAR BUTTON --------->
-.presetSettings{
+
+footer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 20;
+}
+.presetSettings {
   position: absolute;
   top: 20;
   right: 20;
@@ -50,7 +63,7 @@ header {
 }
 // <--------LOGOUT GEAR BUTTON --------->
 #log-out-button {
-  background: black;
+  background: #172c66;
   position: absolute;
   top: 20;
   right: 80;
@@ -67,7 +80,7 @@ header {
   position: absolute;
   top: 20;
   right: 80;
-  color:white;
+  color: #172c66;
   background: url(login.png) no-repeat;
   background-size: 40px;
   width: 40px;
@@ -81,111 +94,125 @@ header {
   display: grid;
   justify-content: center;
   align-content: center;
-  color: white;
+
   font-family: 'Orbitron', sans-serif;
 }
 
 .outer {
-    width:100%;
-    text-align: center;
-    padding: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
 }
-.login-button-click{
-    display: inline-block;
-    background-color: violet;
-    font-family: 'Orbitron', sans-serif;
 
+.userLoginInputs {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-button-click {
+  background-color: #f582ae;
+  padding: 10px 30px;
+  font-family: 'Orbitron', sans-serif;
 }
 
 // <--------CUSTOMIZER PAGE MENU DOWN --------->
+.customizer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
 .preset-form {
-  color: white;
   font-family: 'Orbitron', sans-serif;
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 280px;
 }
 
-input, input[type="text"]{
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px ;
-  border-radius: 4px ;
+input,
+input[type='text'] {
+  border-radius: 4px;
   border-width: 5px 0px 5px 0px;
   padding: 10px;
 }
 
 // <-------- PRESETS & BUTTONS --------->
 
-
 .preset-wrapper {
   display: grid;
   justify-content: center;
   align-content: center;
   grid-gap: 1rem;
-  grid-template-columns: 200px 200px 200px 200px;
-  background-color: black;
+  grid-template-columns: repeat(4, 124px);
+  background-color: #8bd3dd;
 }
 
-.preset-wrapper:nth-child(1) {
-  grid-row: 2;
-  grid-column: 1;
-}
+// .preset-wrapper:nth-child(1) {
+//   grid-row: 2;
+//   grid-column: 1;
+// }
 
-.preset-wrapper:nth-child(2) {
-  grid-row: 2;
-  grid-column: 2;
-}
+// .preset-wrapper:nth-child(2) {
+//   grid-row: 2;
+//   grid-column: 2;
+// }
 
-.preset-wrapper:nth-child(3) {
-  grid-row: 2;
-  grid-column: 3;
-}
+// .preset-wrapper:nth-child(3) {
+//   grid-row: 2;
+//   grid-column: 3;
+// }
 
-.preset-wrapper:nth-child(4) {
-  grid-row: 2;
-  grid-column: 4;
-}
+// .preset-wrapper:nth-child(4) {
+//   grid-row: 2;
+//   grid-column: 4;
+// }
 
-.preset-wrapper:nth-child(5) {
-  grid-row: 3;
-  grid-column: 1;
-}
+// .preset-wrapper:nth-child(5) {
+//   grid-row: 3;
+//   grid-column: 1;
+// }
 
-.preset-wrapper:nth-child(6) {
-  grid-row: 3;
-  grid-column: 2;
-}
+// .preset-wrapper:nth-child(6) {
+//   grid-row: 3;
+//   grid-column: 2;
+// }
 
-.preset-wrapper:nth-child(7) {
-  grid-row: 3;
-  grid-column:3;
-}
+// .preset-wrapper:nth-child(7) {
+//   grid-row: 3;
+//   grid-column: 3;
+// }
 
-.preset-wrapper:nth-child(8) {
-  grid-row: 3;
-  grid-column: 4;
-}
+// .preset-wrapper:nth-child(8) {
+//   grid-row: 3;
+//   grid-column: 4;
+// }
 
-.preset-wrapper:nth-child(9) {
-  grid-row: 4;
-  grid-column: 1;
-}
+// .preset-wrapper:nth-child(9) {
+//   grid-row: 4;
+//   grid-column: 1;
+// }
 
-.preset-wrapper:nth-child(10) {
-  grid-row: 4;
-  grid-column: 2;
-}
+// .preset-wrapper:nth-child(10) {
+//   grid-row: 4;
+//   grid-column: 2;
+// }
 
-.preset-wrapper:nth-child(11) {
-  grid-row: 4;
-  grid-column: 3;
-}
+// .preset-wrapper:nth-child(11) {
+//   grid-row: 4;
+//   grid-column: 3;
+// }
 
-.preset-wrapper:nth-child(12) {
-  grid-row: 4;
-  grid-column: 4;
-}
+// .preset-wrapper:nth-child(12) {
+//   grid-row: 4;
+//   grid-column: 4;
+// }
 // <-------- BOARD & BUTTONS --------->
 
 .board {
@@ -195,7 +222,7 @@ input, input[type="text"]{
   grid-gap: 1rem;
   grid-template-columns: repeat(4, minmax(100px, 1fr), 10vw);
   grid-template-rows: repeat(6, minmax(100px, 1fr), 10vw);
-  background-color: black;
+  background-color: #fef6e4;
 }
 
 .button-wrapper:nth-child(1) {
@@ -230,7 +257,7 @@ input, input[type="text"]{
 
 .button-wrapper:nth-child(7) {
   grid-row: 3;
-  grid-column:3;
+  grid-column: 3;
 }
 
 .button-wrapper:nth-child(8) {
@@ -259,29 +286,23 @@ input, input[type="text"]{
 }
 
 .button-wrapper {
- width: 100px;
+  width: 100px;
   height: 100px;
   border-radius: 10%;
-  box-shadow:
-    inset 0 0 50px #fff,
-    inset 20px 0 80px #f0f,
-    inset -20px 0 80px #0ff,
-    inset 20px 0 300px #f0f,
-    inset -20px 0 300px #0ff,
-    0 0 20px #fff,
-    -10px 0 40px #f0f,
-    10px 0 40px #0ff;
+  box-shadow: inset 0 0 50px #fff, inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff,
+    0 0 20px #fff, -10px 0 40px #f0f, 10px 0 40px #0ff;
 }
 
 // <--------  BUTTON INTERACTIONS --------->
 
-.button-area{
+.button-area {
   background-color: Transparent;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   overflow: hidden;
-  outline:none;
+  outline: none;
   width: 100%;
   height: 100%;
   transition: filter 0.3s ease 0.3s;
@@ -292,35 +313,22 @@ input, input[type="text"]{
   width: 100px;
   height: 100px;
   border-radius: 10%;
-  box-shadow:
-    inset 0 0 30px #fff,
-    inset 20px 0 80px #f0f,
-    inset -20px 0 80px #0ff,
-    inset 20px 0 300px rgb(230, 146, 230),
-    inset -20px 0 300px #0ff,
-    0 0 20px #fff,
-    -10px 0 40px rgb(230, 146, 230),
+  box-shadow: inset 0 0 30px #fff, inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff, inset 20px 0 300px rgb(230, 146, 230),
+    inset -20px 0 300px #0ff, 0 0 20px #fff, -10px 0 40px rgb(230, 146, 230),
     10px 0 40px #0ff;
 }
 
-
-.button-area:active{
+.button-area:active {
   width: 100px;
   height: 100px;
   border-radius: 10%;
-  box-shadow:
-    inset 0 0 50px #fff,
-    inset 20px 0 80px rgb(74, 253, 134),
-    inset -20px 0 80px #0ff,
-    inset 20px 0 300px rgb(247, 3, 3),
-    inset -20px 0 300px #0ff,
-    0 0 20px #fff,
-    -10px 0 40px #f0f,
-    10px 0 40px #0ff;
+  box-shadow: inset 0 0 50px #fff, inset 20px 0 80px rgb(74, 253, 134),
+    inset -20px 0 80px #0ff, inset 20px 0 300px rgb(247, 3, 3),
+    inset -20px 0 300px #0ff, 0 0 20px #fff, -10px 0 40px #f0f, 10px 0 40px #0ff;
   filter: drop-shadow(0px 0px 5px rgb(134, 233, 225));
   transition: filter 0s;
 }
-
 
 // .test {
 //   padding: 20px;
@@ -330,3 +338,8 @@ input, input[type="text"]{
 // input:focus {
 //   outline: none;
 // }
+
+select {
+  padding: 10px 30px;
+  border-radius: 4px;
+}

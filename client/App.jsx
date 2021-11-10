@@ -84,7 +84,7 @@ function App() {
   //     });
   // }, []);
   useEffect(() => {
-    fetch('/all', {
+    fetch('/api/all', {
       method: 'POST', // CHANGE TO POST -> CHANGE SERVER ROUTES -> CHANGE HOW CONTROLLER HANDLES REQ.BODY
       headers: {
         //
@@ -108,7 +108,7 @@ function App() {
   };
 
   const postLogIn = () => {
-    fetch('/login', {
+    fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ function App() {
   };
 
   const postSignUp = () => {
-    fetch('/signup', {
+    fetch('/api/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

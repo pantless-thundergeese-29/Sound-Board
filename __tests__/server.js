@@ -2,6 +2,8 @@ const request = require('supertest');
 const server = 'http://localhost:8080';
 
 
+// JEST and supertest suite
+
 describe('Route integration', () => {
   describe('/', () => {
     describe('GET', () => {
@@ -13,4 +15,57 @@ describe('Route integration', () => {
         .expect(200));
     });
   })
+
+  // TODO: Write test
+  describe('/all', () => {
+    describe('POST', () => {
+      // Middleware: controller.getAll. Expects 200, JSON object of "all".
+      it('responds with 200 status and JSON content type', () => {});
+    });
+  })
+
+  // TODO: Write test
+  describe('/savePreset', () => {
+    describe('POST', () => {
+      // Middleware: Controller.savePrimary, Controller.savePreset, Controller.getALL. Expects 200, no content response.
+      it('responds with 200 status and no content type', () => {});
+    });
+  })
+
+  // TODO: Write test
+  describe('/login', () => {
+    describe('POST', () => {
+      // Middleware: Controller.login, Controller.getALL. Expects 200, JSON object of "loginStatus".
+      it('responds with 200 status and JSON content type', () => {});
+    });
+  })
+
+  // TODO: Write test
+  describe('/signup', () => {
+    describe('POST', () => {
+      // Middleware: Controller.signup Controller.getALL. Expects 200, no content response.
+      it('responds with 200 status and no content type', () => {});
+    });
+  })
+
+  // TODO: Write test
+  describe('/*', () => {
+    describe('POST', () => {
+      // Expects 404, no content response.
+      it('responds with 404 status and no content type', () => {});
+    });
+    describe('GET', () => {
+      // Expects 404, no content response.
+      it('responds with 404 status and no content type', () => {});
+    });
+    describe('PUT', () => {
+      // Expects 404, no content response.
+      it('responds with 404 status and no content type', () => {});
+    });
+    describe('DELETE', () => {
+      // Expects 404, no content response.
+      it('responds with 404 status and no content type', () => {});
+    });
+  })
+
 })

@@ -1,4 +1,7 @@
-// JEST SETUP TESTING
+const db = require('./database.js');
+
+// TODO: Figure out how to test database without affecting actual database contents
+// EXAMPLE JEST TEST BELOW
 function sum(a, b) {
   return a + b;
 }

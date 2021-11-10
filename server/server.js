@@ -34,7 +34,7 @@ app.post('/savePreset', Controller.savePrimary, Controller.savePreset, Controlle
 
 app.post('/login', Controller.login, Controller.getALL, (req, res) => {
   console.log('logged in');
-  return res.sendStatus(200).json(res.locals.loginStatus);
+  return res.status(200).json(res.locals.all); // res.send instead of res.sendStatus
 });
 
 app.post('/signup', Controller.signup, (req, res) => {

@@ -1,5 +1,5 @@
 const db = require('./database.js');
-
+  //const bcrypt = require('bcryptjs');
 const Controller = {};
 
 Controller.getPokemon = (req, res, next) => {
@@ -128,6 +128,7 @@ Controller.getALL = (req, res, next) => {
   db.query(qString)
     .then(data => {
       res.locals.all = formatData(data.rows);
+      console.log('Res.locals.all:', res.locals.all)
       return next();
     })
     .catch(err => {
@@ -174,7 +175,11 @@ Controller.savePreset = (req, res, next) => {
     });
 };
 
-Controller.login = (req, res, next) => {
+Controller.login = (req, res, next) => { // make this async
+  // const valid = await bcrypt.compare(password, user.password);
+  // if(valid === false){
+  //   res.status(401);
+  // }
   console.log('this is the post request body', req.body.userInfo);
   const { username, password } = req.body.userInfo;
   console.log({'username': username, 'password':password});
@@ -193,10 +198,11 @@ Controller.login = (req, res, next) => {
       });
     });
 };
-Controller.signup = (req, res, next) => {
+Controller.signup = (req, res, next) => { //make this async
   console.log('this is the post request body', req.body.allInfo);
   const { username, password } = req.body.allInfo;
   console.log(req.body.allInfo);
+  // const encrypted = await bcrypt.hash(password, 10); //<--replace var password with var encrypted below here
   let qString =  "Insert INTO users (name, password) Values ($1, $2);" //inserting username, pw, preset options
   console.log('trying to save......Adam')
   db.query(qString, [username, password])

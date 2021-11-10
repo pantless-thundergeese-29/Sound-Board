@@ -74,11 +74,14 @@ function App() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ allInfo: { username: username, password: password } })
+      body: JSON.stringify({ userInfo: { username: username, password: password } })
     })
-      .then(res => {
+      .then(res => res.json())
+      .then(data => {
         setLoggedIn(true);
         setCurrUser(username);
+        setAllSounds(data);
+        setDefaultPresets(Object.keys(data));
       })
       .catch(err => {
         console.log("Error logging in user", err);

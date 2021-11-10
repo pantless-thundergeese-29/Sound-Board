@@ -1,81 +1,6 @@
 const db = require('./database.js');
-
+  //const bcrypt = require('bcryptjs');
 const Controller = {};
-
-Controller.getPokemon = (req, res, next) => {
-  const qString =  'SELECT pokemon.name, pokemon.link FROM pokemon';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-
-      //console.log(data.rows);
-      res.locals.pokemon = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getPokemon',
-        message: {err: 'Controller.getPokemon: Error'}
-      });
-    });
-};
-
-Controller.getInstruments = (req, res, next) => {
-  const qString =  'SELECT instruments.name, instruments.link FROM instruments';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-      res.locals.instruments = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getInstruments',
-        message: {err: 'Controller.getInstruments: Error'}
-      });
-    });
-};
-
-Controller.getGaffes = (req, res, next) => {
-  const qString =  'SELECT gaffes.name, gaffes.link FROM gaffes';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-      // console.log(data.rows)
-      res.locals.gaffes = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getGaffes',
-        message: {err: 'Controller.getGaffes: Error'}
-      });
-    });
-};
-
-Controller.getPresets = (req, res, next) => {
-  const qString =  'SELECT presets.presetname, presets.list FROM presets';
-
-  db.query(qString)
-    //grabbing characters from the DB
-    .then(data => {
-      res.locals.gaffes = data.rows;
-      return next();
-    })
-    .catch(err => {
-      console.log("ERROR!!!");
-      return next({
-        log: 'Error in Controller.getGaffes',
-        message: {err: 'Controller.getGaffes: Error'}
-      });
-    });
-};
 
 // Controller.savePreset = (req, res, next) => {
   
@@ -128,6 +53,7 @@ Controller.getALL = (req, res, next) => {
   db.query(qString)
     .then(data => {
       res.locals.all = formatData(data.rows);
+      console.log('Res.locals.all:', res.locals.all)
       return next();
     })
     .catch(err => {
@@ -142,6 +68,7 @@ Controller.savePrimary = (req, res, next) => {
   //unable to do multiple queries at the same time so I need to create
   //the primary key in the preset table for better username usage
   const testing = req.body.newPreset
+  console.log('req.body.newPreset', testing)
   const names = [testing[0], testing[14]]
   let qString = "Insert INTO presets (name, username) Values ($1, $2)";
   db.query(qString, names)
@@ -174,7 +101,11 @@ Controller.savePreset = (req, res, next) => {
     });
 };
 
-Controller.login = (req, res, next) => {
+Controller.login = (req, res, next) => { // make this async
+  // const valid = await bcrypt.compare(password, user.password);
+  // if(valid === false){
+  //   res.status(401);
+  // }
   console.log('this is the post request body', req.body.userInfo);
   const { username, password } = req.body.userInfo;
   console.log({'username': username, 'password':password});
@@ -193,10 +124,11 @@ Controller.login = (req, res, next) => {
       });
     });
 };
-Controller.signup = (req, res, next) => {
+Controller.signup = (req, res, next) => { //make this async
   console.log('this is the post request body', req.body.allInfo);
   const { username, password } = req.body.allInfo;
   console.log(req.body.allInfo);
+  // const encrypted = await bcrypt.hash(password, 10); //<--replace var password with var encrypted below here
   let qString =  "Insert INTO users (name, password) Values ($1, $2);" //inserting username, pw, preset options
   console.log('trying to save......Adam')
   db.query(qString, [username, password])

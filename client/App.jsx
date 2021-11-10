@@ -66,6 +66,23 @@ function App() {
   ];
 
   // useEffect is like componentDidMount componentDidUnmount
+  // useEffect(() => {
+  //   fetch('/all', {
+  //     method: 'POST', // CHANGE TO POST -> CHANGE SERVER ROUTES -> CHANGE HOW CONTROLLER HANDLES REQ.BODY
+  //     headers: {     //
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ username: currUser })
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setAllSounds(data);
+  //       setDefaultPresets(Object.keys(data));
+  //     })
+  //     .catch(err => {
+  //       console.log("Error fetching request from back end", err);
+  //     });
+  // }, []);
   useEffect(() => {
     fetch('/all', {
       method: 'POST', // CHANGE TO POST -> CHANGE SERVER ROUTES -> CHANGE HOW CONTROLLER HANDLES REQ.BODY
@@ -96,13 +113,14 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        allInfo: { username: username, password: password },
-      }),
+      body: JSON.stringify({ userInfo: { username: username, password: password } })
     })
-      .then((res) => {
+      .then(res => res.json())
+      .then(data => {
         setLoggedIn(true);
         setCurrUser(username);
+        setAllSounds(data);
+        setDefaultPresets(Object.keys(data));
       })
       .catch((err) => {
         console.log('Error logging in user', err);

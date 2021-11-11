@@ -1,5 +1,5 @@
 const db = require('./database.js');
-
+const bcrypt = require('bcryptjs');
 const DatabaseFuncs = {};
 
 DatabaseFuncs.getAll = async (username) => {
@@ -72,21 +72,24 @@ DatabaseFuncs.savePreset = async(names) => {
   } catch (err) { return err }
 }
 
-DatabaseFuncs.login = async (username, password) => {
-  let qString =  'select * from users Where name = $1 AND password = $2';
+DatabaseFuncs.login = async (username) => {
+  let qString =  `SELECT * FROM users WHERE users.name = $1`; 
   try{
-    const user = await db.query(qString, [username, password])
-    return user;
+    const dbresponse = await db.query(qString, [username]);
+    return dbresponse;
   } catch (err) {return err}
 }
 
 DatabaseFuncs.signup = async (username, password) => {
-  let qString =  "Insert INTO users (name, password) Values ($1, $2);" 
+  const bcryptedPW = await bcrypt.hash(password, 10);
+  let qString =  "Insert INTO users (name, password) Values ($1, $2);"
   try {
-    const user = await db.query(qString, [username, password]);
-    console.log('this is the user - signup', user);
-    return user;
-  } catch (err) {return err}
+    await db.query(qString, [username, bcryptedPW]);
+    return;
+  } catch (err) {
+    console.log('Invalid username')
+    return err
+  }
 }
 
 module.exports = DatabaseFuncs;

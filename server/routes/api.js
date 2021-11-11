@@ -22,12 +22,11 @@ router.post('/savePreset', BoardController.savePrimary, BoardController.savePres
 
 // Log in  user
 router.post('/login', UserController.login, BoardController.getAll, (req, res) => {
-  return res.status(200).json(res.locals.all); 
+  return res.status(200).json(res.locals); 
 });
 
 // Sign up user
-router.post('/signup', UserController.signup, CookieController.setSSIDCookie, (req, res) => {
-  console.log("at the end of the signup post request")
+router.post('/signup', UserController.signup, (req, res) => {
   return res.status(200).json(res.locals.username);
 });
 

@@ -30,7 +30,6 @@ function makeApp(db) {
       message: { err: 'An arror occured' },
     }
     const errorObj = Object.assign({}, defaultErr, err);
-    console.log(errorObj.log);
     return res.status(errorObj.status).json(errorObj.message);
   })
 

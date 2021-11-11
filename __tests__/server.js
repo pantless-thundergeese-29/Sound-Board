@@ -21,12 +21,12 @@ describe('All Integration Tests', () => {
     describe('POST', () => {
       it('responds with 200 status and no content type', () => {
         return request(app)
-        .post('/api/all')
+        .post('/api/savePreset')
+        .send({
+          newPreset: ["first", "last"],
+          userInfo: {username: "ella", password: "ellaPW"}
+        })
         .expect(200)
-        // ADD LINE ABOUT EXPECTED BODY
-        // .then(({ body }) => {
-        //   expect(body).toBe("");
-        // });
       });
     });
   })
@@ -35,8 +35,8 @@ describe('All Integration Tests', () => {
     describe('POST', () => {
       it('responds with 200 status and JSON content type', () => {
         return request(app)
-        .post('/api/all')
-        .expect(200)
+        .post('/api/login')
+        .send({userInfo: {username: "ella", password: "ellaPW"}})
         .expect('Content-Type', /application\/json/)
         // ADD LINE ABOUT EXPECTED BODY
         // .then(({ body }) => {
@@ -50,13 +50,23 @@ describe('All Integration Tests', () => {
       describe('POST', () => {
         it('responds with 200 status and JSON content type', () => {
           return request(app)
-          .post('/api/all')
+          .post('/api/signup')
+          .send({allInfo: {username: "elle", password: "ellePW"}})
           .expect(200)
           .expect('Content-Type', /application\/json/)
-          // ADD LINE ABOUT EXPECTED BODY
-          // .then(({ body }) => {
-          //   expect(body).toBe("");
-          // });
+          .then(({ body }) => {
+            expect(body.username).toBe("elle");
+          });
+          });
+        it('responds with username in the response body', () => {
+          return request(app)
+          .post('/api/signup')
+          .send({allInfo: {username: "elle", password: "ellePW"}})
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+          .then(({ body }) => {
+            expect(body.username).toBe("elle");
+          });
           });
         });
       });

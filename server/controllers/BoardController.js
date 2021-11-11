@@ -21,7 +21,7 @@ BoardController.getAll = async (req, res, next) => {
       message: {err: 'BoardController.getAll'}
     });
   }
-
+}
 
 BoardController.savePrimary = async (req, res, next) => {
   try {

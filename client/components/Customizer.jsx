@@ -70,22 +70,32 @@ const Customizer = (props) => {
     selectedPreset[i] = e.target.value;
     setNewPreset(selectedPreset);
   }
-
-  const presetOptions = [];
-  for (let i = 0; i < 12; i++) {
-    presetOptions.push(
-      <div className="customizer-dropdown-wrapper">
-        <select
-          onChange={(e) => handleChange(i, e)}
-          id={`${i}dropdown`}
-          name="soundClips"
-        >
-          {formElements}
-        </select>
-      </div>
-    );
-  }
-  console.log('Preset options', presetOptions)
+  const btnKeys1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+  const btnKeys2 = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
+  const btnKeys3 = ['z', 'x', 'c', 'v', 'b', 'n', 'm'];
+  const row1Options = [];
+  const row2Options = [];
+  const row3Options = [];
+  const renderOptions = (keyArr, presetOptions) => {
+    for (let i = 0; i < keyArr.length; i++) {
+      presetOptions.push(
+        <div className="customizer-dropdown-wrapper">
+          <select
+            onChange={(e) => handleChange(i, e)}
+            id={`${i}dropdown`}
+            key={keyArr[i]}
+            name="soundClips"
+          >
+            {formElements}
+          </select>
+        </div>
+      );
+    }
+  };
+  renderOptions(btnKeys1, row1Options);
+  renderOptions(btnKeys2, row2Options);
+  renderOptions(btnKeys3, row3Options);
+  // console.log('Preset options', row1Options);
   return (
     <div className="customizer-wrapper">
       <form
@@ -95,6 +105,11 @@ const Customizer = (props) => {
           addPreset();
         }}
       >
+        <div className="optionRows">
+          <div className="preset-wrapper">{row1Options}</div>
+          <div className="preset-wrapper">{row2Options}</div>
+          <div className="preset-wrapper">{row3Options}</div>
+        </div>
         <div className="preset-form">
           {/* <label htmlFor="preset-name" style={{color:'white'}} >Preset Name:     </label> */}
           <input
@@ -108,8 +123,6 @@ const Customizer = (props) => {
             Submit
           </button>
         </div>
-
-        <div className="preset-wrapper">{presetOptions}</div>
       </form>
     </div>
     // GET NAME OF PRESET

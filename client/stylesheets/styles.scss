@@ -234,6 +234,16 @@ input[type='text'] {
   background-color: #fef6e4;
 }
 
+.optionRows {
+  display: flex;
+  flex-direction: column;
+}
+
+.preset-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
 .row {
   display: flex;
   gap: 1rem;

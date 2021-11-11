@@ -53,7 +53,7 @@ const Board = (props) => {
     let key = e.code.replace('Key', '').toLowerCase();
     console.log(key);
     const btn = document.getElementById(key);
-    console.log(btn.style);
+    console.log(e);
     btn.click();
     btn.animate(
       [

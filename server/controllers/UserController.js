@@ -26,7 +26,6 @@ UserController.login = async (req, res, next) => {
     res.locals.loggedIn = true
     return next();
   } catch (err){
-    console.log("caught")
     return next({
     log: 'Error in UserController.login',
     message: {err: 'UserController.login: Error'}

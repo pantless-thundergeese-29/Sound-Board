@@ -5,9 +5,9 @@ const savePrimary = jest.fn();
 
 const savePreset = jest.fn();
 
-const login = jest.fn((username, password) => {
+const login = jest.fn((username) => {
   // Assign recognized user and password for testing purposes:
-  if (username !== "ella" || password !== "ellaPW") throw new Error('User not found')
+  if (username !== "ella") throw new Error('User not found')
 });
 
 const signup = jest.fn();

@@ -21,30 +21,30 @@ describe('All Integration Tests', () => {
     describe('POST', () => {
       it('responds with 200 status and no content type', () => {
         return request(app)
-        .post('/api/all')
+        .post('/api/savePreset')
+        .send({
+          newPreset: ["first", "last"],
+          userInfo: {username: "ella", password: "ellaPW"}
+        })
         .expect(200)
-        // ADD LINE ABOUT EXPECTED BODY
-        // .then(({ body }) => {
-        //   expect(body).toBe("");
-        // });
       });
     });
   })
 
-  // describe('/api/login', () => {
-  //   describe('POST', () => {
-  //     it('responds with 200 status and JSON content type', () => {
-  //       return request(app)
-  //       .post('/api/all')
-  //       .expect(200)
-  //       .expect('Content-Type', /application\/json/)
-  //       // ADD LINE ABOUT EXPECTED BODY
-  //       // .then(({ body }) => {
-  //       //   expect(body).toBe("");
-  //       // });
-  //       });
-  //     });
-  //   });
+  describe('/api/login', () => {
+    describe('POST', () => {
+      it('responds with 200 status and JSON content type', () => {
+        return request(app)
+        .post('/api/login')
+        .send({userInfo: {username: "ella", password: "ellaPW"}})
+        .expect('Content-Type', /application\/json/)
+        // ADD LINE ABOUT EXPECTED BODY
+        // .then(({ body }) => {
+        //   expect(body).toBe("");
+        // });
+        });
+      });
+    });
 
     describe('/api/signup', () => {
       describe('POST', () => {

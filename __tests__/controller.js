@@ -18,7 +18,7 @@ describe ("Database controllers", () => {
       const username = "ella"; const password = "ellaPW";
       const reqValid = { body: {userInfo : {username, password} } };
       const result = UserController.login(reqValid, res, next);
-      expect(db.login.mock.calls[0][0]).toEqual([username, password]);
+      expect(db.login.mock.calls[0][0]).toEqual(username);
       expect(db.login.mock.calls.length).toBe(1);
       expect(result).not.toContain("Error");
  

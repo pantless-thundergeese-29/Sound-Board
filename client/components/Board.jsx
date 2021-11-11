@@ -24,7 +24,6 @@ const Board = (props) => {
   const renderBtns = (keysArr, btnRow) => {
     for (let i = 0; i < keysArr.length; i++) {
       if (sounds[i] !== undefined) {
-        console.log(keysArr[i]);
         btnRow.push(
           <SoundButton
             id={keysArr[i]}
@@ -53,14 +52,31 @@ const Board = (props) => {
   function playSound(e) {
     let key = e.code.replace('Key', '').toLowerCase();
     console.log(key);
-    document.getElementById(key).click();
+    const btn = document.getElementById(key);
+    console.log(btn.style);
+    btn.click();
+    btn.animate(
+      [
+        { borderRadius: `10%` },
+        {
+          boxShadow: `inset 0 0 50px #fff, inset 20px 0 80px rgb(74, 253, 134),
+      inset -20px 0 80px #0ff, inset 20px 0 300px rgb(247, 3, 3),
+      inset -20px 0 300px #0ff, 0 0 20px #fff, -10px 0 40px #f0f, 10px 0 40px #0ff`,
+        },
+        { filter: `drop-shadow(0px 0px 5px rgb(134, 233, 225))` },
+      ],
+      {
+        duration: 200,
+        iteration: 1,
+      }
+    );
   }
 
   return (
     <div className="board">
       <div className="row"> {row1Btns} </div>
-      <div className="row"> {row2Btns}</div>
-      <div className="row"> {row3Btns}</div>
+      <div className="row"> {row2Btns} </div>
+      <div className="row"> {row3Btns} </div>
     </div>
   );
 };

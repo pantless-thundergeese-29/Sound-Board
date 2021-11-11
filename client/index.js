@@ -6,7 +6,7 @@ render(
   <section className="container">
     <App />
     <footer>
-      <p>BOÄRDÉ</p>
+      <p className="footer">BOÄRDÉ</p>
     </footer>
   </section>,
   document.getElementById('root')

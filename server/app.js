@@ -1,6 +1,6 @@
 const express = require('express');
 const apiRouter = require('./routes/api');
-
+const cookieParser = require('cookie-parser');
 
 function makeApp(db) {
   const app = express();
@@ -9,6 +9,9 @@ function makeApp(db) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  //handle parsing cookies
+  app.use(cookieParser());
+  
   //define route handler
   app.use('/api', apiRouter);
 

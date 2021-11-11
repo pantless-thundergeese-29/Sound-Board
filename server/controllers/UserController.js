@@ -13,6 +13,7 @@ UserController.login = async (req, res, next) => {
     await db.login([username, password])
     return next();
   } catch (err){
+    console.log("caught")
     return next({
     log: 'Error in UserController.getGaffes',
     message: {err: 'UserController.getGaffes: Error'}

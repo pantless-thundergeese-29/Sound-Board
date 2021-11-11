@@ -26,6 +26,9 @@ router.post('/login', UserController.login, BoardController.getAll, (req, res) =
 });
 
 // Sign up user
-router.post('/signup', UserController.signup, (req, res) => {});
+router.post('/signup', UserController.signup, (req, res) => {
+  console.log("at the end of the signup post request")
+  return res.status(200).json(res.locals);
+});
 
 module.exports = router;

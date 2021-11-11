@@ -41,12 +41,13 @@ const Customizer = (props) => {
     props.setMenuStatus(false);
     databaseEntry = [presetName, ...Object.values(newPreset)];
     console.log('databaseentry', databaseEntry);
-    fetch('/savePreset', {
+    fetch('/api/savePreset', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        username: props.currUser,
         newPreset: [
           presetName,
           ...Object.values(newPreset),
@@ -84,7 +85,7 @@ const Customizer = (props) => {
       </div>
     );
   }
-
+  console.log('Preset options', presetOptions)
   return (
     <div className="customizer-wrapper">
       <form

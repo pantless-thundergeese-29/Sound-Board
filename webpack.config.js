@@ -9,7 +9,7 @@ module.exports = {
     path: path.join(__dirname, '/build')
   },
   // I believe this works?
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   module: {
     rules: [
       {

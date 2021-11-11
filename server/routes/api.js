@@ -5,7 +5,7 @@ const BoardController = require('../controllers/BoardController');
 const UserController = require('../controllers/UserController');
 
 
-//Return homepage file
+//This path not being run when using webpack
 router.get('/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname + '/index.html'));
 });
@@ -22,13 +22,13 @@ router.post('/savePreset', BoardController.savePrimary, BoardController.savePres
 
 // Log in  user
 router.post('/login', UserController.login, BoardController.getAll, (req, res) => {
-  return res.status(200).json(res.locals.all); // res.send instead of res.sendStatus
+  return res.status(200).json(res.locals.all); 
 });
 
 // Sign up user
 router.post('/signup', UserController.signup, (req, res) => {
   console.log("at the end of the signup post request")
-  return res.status(200).json(res.locals);
+  return res.status(200).json(res.locals.username);
 });
 
 module.exports = router;

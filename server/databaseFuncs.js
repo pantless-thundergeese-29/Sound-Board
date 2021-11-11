@@ -87,4 +87,5 @@ DatabaseFuncs.signup = async (username, password) => {
     return;
   } catch (err) {return err}
 }
+
 module.exports = DatabaseFuncs;

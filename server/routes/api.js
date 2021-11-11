@@ -21,7 +21,7 @@ router.post('/savePreset', BoardController.savePrimary, BoardController.savePres
 });
 
 // Log in  user
-router.post('/login', UserController.login, BoardController.getAll, (req, res) => {
+router.post('/login', UserController.login, CookieController.setSSIDCookie, BoardController.getAll, (req, res) => {
   return res.status(200).json(res.locals); 
 });
 
@@ -30,5 +30,10 @@ router.post('/signup', UserController.signup, (req, res) => {
   return res.status(200).json(res.locals.username);
 });
 
+// Secret route to check cookies 
+router.get('/secret', CookieController.setSSIDCookie, (req, res) => {
+  console.log('entered the secret room');
+  return res.status(200)
+})
 
 module.exports = router;

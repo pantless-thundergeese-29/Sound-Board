@@ -127,10 +127,11 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setLoggedIn(true);
+        console.log(data)
+        setLoggedIn(data.loggedIn);
         setCurrUser(username);
-        setAllSounds(data);
-        setDefaultPresets(Object.keys(data));
+        setAllSounds(data.all);
+        setDefaultPresets(Object.keys(data.all));
       })
       .catch((err) => {
         console.log('Error logging in user', err);

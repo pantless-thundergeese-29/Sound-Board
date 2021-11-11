@@ -15,7 +15,7 @@ function App() {
   // STATE FOR DEFAULT PRESETS ON PAGE LOAD
   const [defaultPresets, setDefaultPresets] = useState([]);
   // STATE FOR SHOWING LOGIN FORM
-  // const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   // STATE FOR USER LOGGED IN STATUS
   const [loggedIn, setLoggedIn] = useState(false);
   // STATE FOR LOGGED IN USER
@@ -57,7 +57,11 @@ function App() {
           >
             Log In
           </button>
-          <button type="button" className="login-button-click" onClick={postSignUp}>
+          <button
+            type="button"
+            className="login-button-click"
+            onClick={postSignUp}
+          >
             Sign Up
           </button>
         </div>
@@ -107,17 +111,22 @@ function App() {
     setCurrUser(null);
   };
 
+  // const handleKeyDown = (e) => {
+  //   console.log(e.target.value);
+  // };
+
   const postLogIn = () => {
     fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userInfo: { username: username, password: password } })
+      body: JSON.stringify({
+        userInfo: { username: username, password: password },
+      }),
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log('data from login', data)
+      .then((res) => res.json())
+      .then((data) => {
         setLoggedIn(true);
         setCurrUser(username);
         setAllSounds(data);
@@ -139,11 +148,11 @@ function App() {
       }),
       //const { username, password } = req.body.allInfo;
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log("have made it into a response from signup", data)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('have made it into a response from signup', data);
         setLoggedIn(true);
-        if(loggedIn === true) console.log('Logged in')
+        if (loggedIn === true) console.log('Logged in');
         setCurrUser(username);
       })
       .catch((err) => {
@@ -194,7 +203,11 @@ function App() {
               >
                 Log In
               </button>
-              <button type="button" className="login-button-click" onClick={postSignUp}>
+              <button
+                type="button"
+                className="login-button-click"
+                onClick={postSignUp}
+              >
                 Sign Up
               </button>
             </div>
@@ -212,7 +225,13 @@ function App() {
           allSounds={allSounds}
         />
       )}
-      {loggedIn && <Board preset={preset} allSounds={allSounds} />}
+      {loggedIn && (
+        <Board
+          preset={preset}
+          allSounds={allSounds}
+          onKeyPress={() => handleKeyPress()}
+        />
+      )}
       {loggedIn && (
         <Settings defaultPresets={defaultPresets} setPreset={setPreset} />
       )}

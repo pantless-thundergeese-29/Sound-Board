@@ -61,15 +61,6 @@ describe ("Database controllers", () => {
       expect(result).not.toContain("Error");
     });
 
-    // it('should throw error if incorrect name or password entered', () => {
-    //   const username = "ellie"; const password = "elliePW";
-    //   const reqValid = { body: {allInfo : {username, password} } };
-    //   result = UserController.signup(reqValid, res, next);
-    //   expect(db.signup.mock.calls.length).toBe(1);
-    //   expect(next.mock.results[0].value).toBe("Error");
-    // });
-
-
   });
 })
 

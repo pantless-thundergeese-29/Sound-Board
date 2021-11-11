@@ -34,6 +34,7 @@ function App() {
           <input
             onChange={(e) => setUsername(e.target.value)}
             placeholder="username"
+            id="setUsername"
             type="text"
             required
           ></input>
@@ -44,11 +45,13 @@ function App() {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="password"
+            id="setPassword"
             required
           ></input>
         </div>
         <div className="outer">
           <button
+            id="submitLogin"
             className="login-button-click"
             onClick={(e) => {
               e.preventDefault();
@@ -186,6 +189,7 @@ function App() {
               <input
                 onChange={(e) => setUsername(e.target.value)}
                 type="text"
+                id="setUsername"
                 placeholder="username"
                 required
               ></input>
@@ -193,11 +197,13 @@ function App() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password"
                 type="password"
+                id="setPassword"
                 required
               ></input>
             </div>
             <div className="outer">
               <button
+                id="submitLogin"
                 className="login-button-click"
                 onClick={(e) => {
                   e.preventDefault();

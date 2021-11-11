@@ -9,7 +9,6 @@ const UserController = {};
 
 UserController.login = async (req, res, next) => { 
   const { username, password } = req.body.userInfo;
-
   try {
     const response = await db.login(username)
     if(response.rows.length === 0) {

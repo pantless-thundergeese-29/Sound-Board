@@ -7,7 +7,7 @@ const Customizer = (props) => {
 
   useEffect(() => {
     const defaultPreset = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 26; i++) {
       defaultPreset.push(currentSounds[0]);
     }
     setNewPreset(defaultPreset);
@@ -24,11 +24,12 @@ const Customizer = (props) => {
         }
       }
     });
+    console.log('current sounds------>', currentSounds);
   };
 
   soundsArray();
   const formElements = currentSounds.map((element, i) => (
-    <option key={`${i}`} value={element}>
+    <option key={element} value={element}>
       {' '}
       {element}{' '}
     </option>
@@ -39,8 +40,8 @@ const Customizer = (props) => {
   const addPreset = () => {
     console.log(props.currUser);
     props.setMenuStatus(false);
-    databaseEntry = [presetName, ...Object.values(newPreset)];
-    console.log('databaseentry', databaseEntry);
+    // databaseEntry = [presetName, ...Object.values(newPreset)];
+    // console.log('databaseentry', databaseEntry);
     fetch('/api/savePreset', {
       method: 'POST',
       headers: {
@@ -67,7 +68,9 @@ const Customizer = (props) => {
 
   function handleChange(i, e) {
     const selectedPreset = JSON.parse(JSON.stringify(newPreset));
+    console.log(selectedPreset);
     selectedPreset[i] = e.target.value;
+    console.log(selectedPreset);
     setNewPreset(selectedPreset);
   }
   const btnKeys1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
@@ -76,13 +79,13 @@ const Customizer = (props) => {
   const row1Options = [];
   const row2Options = [];
   const row3Options = [];
-  const renderOptions = (keyArr, presetOptions) => {
-    for (let i = 0; i < keyArr.length; i++) {
+  const renderOptions = (k, keyArr, presetOptions) => {
+    for (let i = k; i < k + keyArr.length; i++) {
       presetOptions.push(
         <div className="customizer-dropdown-wrapper">
           <select
             onChange={(e) => handleChange(i, e)}
-            id={`${i}dropdown`}
+            id={`${keyArr[i]}dropdown`}
             className="preset-dropdown"
             key={keyArr[i]}
             name="soundClips"
@@ -93,9 +96,9 @@ const Customizer = (props) => {
       );
     }
   };
-  renderOptions(btnKeys1, row1Options);
-  renderOptions(btnKeys2, row2Options);
-  renderOptions(btnKeys3, row3Options);
+  renderOptions(0, btnKeys1, row1Options);
+  renderOptions(10, btnKeys2, row2Options);
+  renderOptions(18, btnKeys3, row3Options);
   // console.log('Preset options', row1Options);
   return (
     <div className="customizer-wrapper">
@@ -107,9 +110,15 @@ const Customizer = (props) => {
         }}
       >
         <div className="optionRows">
-          <div className="preset-wrapper">{row1Options}</div>
-          <div className="preset-wrapper">{row2Options}</div>
-          <div className="preset-wrapper">{row3Options}</div>
+          <div key="OR1" className="preset-wrapper">
+            {row1Options}
+          </div>
+          <div key="OR2" className="preset-wrapper">
+            {row2Options}
+          </div>
+          <div key="OR3" className="preset-wrapper">
+            {row3Options}
+          </div>
         </div>
         <div className="preset-form">
           {/* <label htmlFor="preset-name" style={{color:'white'}} >Preset Name:     </label> */}

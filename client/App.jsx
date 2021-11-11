@@ -127,7 +127,7 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log('loginData------>', data);
         setLoggedIn(data.loggedIn);
         setCurrUser(username);
         setAllSounds(data.all);

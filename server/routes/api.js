@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const BoardController = require('../controllers/BoardController');
 const UserController = require('../controllers/UserController');
-
+const CookieController =require('../controllers/CookieController');
 
 //This path not being run when using webpack
 router.get('/', (req, res) => {
@@ -29,5 +29,6 @@ router.post('/login', UserController.login, BoardController.getAll, (req, res) =
 router.post('/signup', UserController.signup, (req, res) => {
   return res.status(200).json(res.locals.username);
 });
+
 
 module.exports = router;

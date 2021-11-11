@@ -150,7 +150,6 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('have made it into a response from signup', data);
         setLoggedIn(true);
         if (loggedIn === true) console.log('Logged in');
         setCurrUser(username);

@@ -32,6 +32,7 @@ function makeApp(db) {
   })
 
   return app
+
 }
 
 module.exports = makeApp;

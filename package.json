@@ -9,7 +9,7 @@
     "dev": "export NODE_ENV=development; webpack serve --open & nodemon server/server.js",
     "gulp-prod": "node_modules/.bin/gulp prod",
     "gulp-dev": "node_modules/.bin/gulp dev",
-    "test": "jest"
+    "test": "export NODE_ENV=test; jest"
   },
   "nodemonConfig": {
     "ignore": [

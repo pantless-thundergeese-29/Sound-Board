@@ -21,32 +21,32 @@ const Board = (props) => {
   const btnKeys1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
   const btnKeys2 = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
   const btnKeys3 = ['z', 'x', 'c', 'v', 'b', 'n', 'm'];
-  const renderBtns = (keysArr, btnRow) => {
-    for (let i = 0; i < keysArr.length; i++) {
-      if (sounds[i] !== undefined) {
+  const renderBtns = (k, keysArr, btnRow) => {
+    for (let i = k; i < k + keysArr.length; i++) {
+      if (sounds[i - k] !== undefined) {
         btnRow.push(
           <SoundButton
-            id={keysArr[i]}
+            id={keysArr[i - k]}
             key={i}
-            name={keysArr[i]}
-            sound={sounds[i].link}
+            name={keysArr[i - k]}
+            sound={sounds[i - k].link}
           />
         );
       } else {
         btnRow.push(
           <SoundButton
-            id={keysArr[i]}
+            id={keysArr[i - k]}
             key={i}
-            name={keysArr[i]}
+            name={keysArr[i - k]}
             sound={defaultSound}
           />
         );
       }
     }
   };
-  renderBtns(btnKeys1, row1Btns);
-  renderBtns(btnKeys2, row2Btns);
-  renderBtns(btnKeys3, row3Btns);
+  renderBtns(0, btnKeys1, row1Btns);
+  renderBtns(10, btnKeys2, row2Btns);
+  renderBtns(18, btnKeys3, row3Btns);
 
   document.addEventListener('keydown', playSound);
   function playSound(e) {

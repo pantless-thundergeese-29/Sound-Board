@@ -57,7 +57,7 @@ function App() {
           >
             Log In
           </button>
-          <button className="login-button-click" onClick={postSignUp}>
+          <button type="button" className="login-button-click" onClick={postSignUp}>
             Sign Up
           </button>
         </div>
@@ -117,6 +117,7 @@ function App() {
     })
       .then(res => res.json())
       .then(data => {
+        console.log('data from login', data)
         setLoggedIn(true);
         setCurrUser(username);
         setAllSounds(data);
@@ -138,8 +139,11 @@ function App() {
       }),
       //const { username, password } = req.body.allInfo;
     })
-      .then((res) => {
+      .then(res => res.json())
+      .then(data => {
+        console.log("have made it into a response from signup", data)
         setLoggedIn(true);
+        if(loggedIn === true) console.log('Logged in')
         setCurrUser(username);
       })
       .catch((err) => {
@@ -190,7 +194,7 @@ function App() {
               >
                 Log In
               </button>
-              <button className="login-button-click" onClick={postSignUp}>
+              <button type="button" className="login-button-click" onClick={postSignUp}>
                 Sign Up
               </button>
             </div>

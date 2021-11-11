@@ -8,12 +8,10 @@ const db = require(databasePath);
 const BoardController = {};
 
 BoardController.getAll = async (req, res, next) => {
-  console.log(process.env.NODE_ENV)
   try {
   let username;
   if (req.body.userInfo == undefined) username = req.body.username;
   else username = req.body.userInfo.username;
-
   const data = await db.getAll(username);
   res.locals.all = data;
   return next();

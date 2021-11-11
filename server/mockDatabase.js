@@ -1,8 +1,15 @@
 // Define jest functions for testing with mock database
 const getAll = jest.fn();
+
 const savePrimary = jest.fn();
+
 const savePreset = jest.fn();
-const login = jest.fn();
+
+const login = jest.fn((username) => {
+  // Assign recognized user and password for testing purposes:
+  if (username !== "ella") throw new Error('User not found')
+});
+
 const signup = jest.fn();
 
 // Define mock database with mock functions
@@ -11,7 +18,7 @@ const db = {
   savePrimary,
   savePreset,
   login,
-  signup,
+  signup
 }
 
 // Export mock database

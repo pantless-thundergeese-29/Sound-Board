@@ -75,16 +75,17 @@ DatabaseFuncs.savePreset = async(names) => {
 DatabaseFuncs.login = async (username, password) => {
   let qString =  'select * from users Where name = $1 AND password = $2';
   try{
-    await db.query(qString, [username, password])
-    return;
+    const user = await db.query(qString, [username, password])
+    return user;
   } catch (err) {return err}
 }
 
 DatabaseFuncs.signup = async (username, password) => {
   let qString =  "Insert INTO users (name, password) Values ($1, $2);" 
   try {
-    await db.query(qString, [username, password]);
-    return;
+    const user = await db.query(qString, [username, password]);
+    console.log('this is the user - signup', user);
+    return user;
   } catch (err) {return err}
 }
 

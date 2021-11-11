@@ -15,7 +15,21 @@ body {
   padding-bottom: 40px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
 // <--------HEADER --------->
+// .header-container {
+//   max-width: 500px;
+//   // display: flex;
+//   // justify-content: center;
+//   margin: 0 auto;
+// }
+
 header {
   // text-align: center;
   margin: 0 auto;
@@ -25,12 +39,6 @@ header {
   background-size: contain;
   background-position: center;
 }
-.container {
-  max-width: 500px;
-  // display: flex;
-  // justify-content: center;
-  margin: 0 auto;
-}
 
 // <--------MAIN PAGE DROP DOWN --------->
 
@@ -38,7 +46,7 @@ header {
   display: grid;
   justify-content: center;
   align-content: center;
-  margin: 10px;
+  margin-top: 50px;
   padding: 20px;
 }
 
@@ -48,7 +56,7 @@ footer {
   position: absolute;
   display: flex;
   justify-content: center;
-  bottom: 20;
+  bottom: 50;
 }
 .presetSettings {
   position: absolute;
@@ -150,7 +158,7 @@ input[type='text'] {
   justify-content: center;
   align-content: center;
   grid-gap: 1rem;
-  grid-template-columns: repeat(4, 124px);
+  // grid-template-columns: repeat(4, 124px);
   background-color: #8bd3dd;
 }
 
@@ -216,74 +224,80 @@ input[type='text'] {
 // <-------- BOARD & BUTTONS --------->
 
 .board {
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(4, minmax(100px, 1fr), 10vw);
-  grid-template-rows: repeat(6, minmax(100px, 1fr), 10vw);
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  // grid-template-columns: repeat(10, minmax(100px, 1fr), 10vw);
+  // grid-template-rows: repeat(3, 1fr);
   background-color: #fef6e4;
 }
 
-.button-wrapper:nth-child(1) {
-  grid-row: 2;
-  grid-column: 1;
+.row {
+  display: flex;
+  gap: 1rem;
 }
 
-.button-wrapper:nth-child(2) {
-  grid-row: 2;
-  grid-column: 2;
-}
+// .button-wrapper:nth-child(1) {
+//   grid-row: 2;
+//   grid-column: 1;
+// }
 
-.button-wrapper:nth-child(3) {
-  grid-row: 2;
-  grid-column: 3;
-}
+// .button-wrapper:nth-child(2) {
+//   grid-row: 2;
+//   grid-column: 2;
+// }
 
-.button-wrapper:nth-child(4) {
-  grid-row: 2;
-  grid-column: 4;
-}
+// .button-wrapper:nth-child(3) {
+//   grid-row: 2;
+//   grid-column: 3;
+// }
 
-.button-wrapper:nth-child(5) {
-  grid-row: 3;
-  grid-column: 1;
-}
+// .button-wrapper:nth-child(4) {
+//   grid-row: 2;
+//   grid-column: 4;
+// }
 
-.button-wrapper:nth-child(6) {
-  grid-row: 3;
-  grid-column: 2;
-}
+// .button-wrapper:nth-child(5) {
+//   grid-row: 3;
+//   grid-column: 1;
+// }
 
-.button-wrapper:nth-child(7) {
-  grid-row: 3;
-  grid-column: 3;
-}
+// .button-wrapper:nth-child(6) {
+//   grid-row: 3;
+//   grid-column: 2;
+// }
 
-.button-wrapper:nth-child(8) {
-  grid-row: 3;
-  grid-column: 4;
-}
+// .button-wrapper:nth-child(7) {
+//   grid-row: 3;
+//   grid-column: 3;
+// }
 
-.button-wrapper:nth-child(9) {
-  grid-row: 4;
-  grid-column: 1;
-}
+// .button-wrapper:nth-child(8) {
+//   grid-row: 3;
+//   grid-column: 4;
+// }
 
-.button-wrapper:nth-child(10) {
-  grid-row: 4;
-  grid-column: 2;
-}
+// .button-wrapper:nth-child(9) {
+//   grid-row: 4;
+//   grid-column: 1;
+// }
 
-.button-wrapper:nth-child(11) {
-  grid-row: 4;
-  grid-column: 3;
-}
+// .button-wrapper:nth-child(10) {
+//   grid-row: 4;
+//   grid-column: 2;
+// }
 
-.button-wrapper:nth-child(12) {
-  grid-row: 4;
-  grid-column: 4;
-}
+// .button-wrapper:nth-child(11) {
+//   grid-row: 4;
+//   grid-column: 3;
+// }
+
+// .button-wrapper:nth-child(12) {
+//   grid-row: 4;
+//   grid-column: 4;
+// }
 
 .button-wrapper {
   width: 100px;
@@ -307,6 +321,9 @@ input[type='text'] {
   height: 100%;
   transition: filter 0.3s ease 0.3s;
   transition-timing-function: ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-area:hover {
@@ -330,6 +347,12 @@ input[type='text'] {
   transition: filter 0s;
 }
 
+.button-letter {
+  color: #001858;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
+}
+
 // .test {
 //   padding: 20px;
 //   background-color:white;
@@ -342,4 +365,5 @@ input[type='text'] {
 select {
   padding: 10px 30px;
   border-radius: 4px;
+  font-family: 'Orbitron', sans-serif;
 }

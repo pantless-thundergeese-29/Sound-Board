@@ -2,4 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './App.jsx';
 
-render(<App />, document.getElementById('root'));
+render(
+  <section className="container">
+    <App />
+    <footer>
+      <p>BOÄRDÉ</p>
+    </footer>
+  </section>,
+  document.getElementById('root')
+);

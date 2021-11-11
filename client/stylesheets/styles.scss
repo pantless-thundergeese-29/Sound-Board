@@ -234,6 +234,16 @@ input[type='text'] {
   background-color: #fef6e4;
 }
 
+.optionRows {
+  display: flex;
+  flex-direction: column;
+}
+
+.preset-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
 .row {
   display: flex;
   gap: 1rem;
@@ -361,6 +371,12 @@ input[type='text'] {
 // input:focus {
 //   outline: none;
 // }
+
+.footer {
+  font-size: 30px;
+  color: #172c66;
+  opacity: 45%;
+}
 
 select {
   padding: 10px 30px;

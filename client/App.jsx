@@ -165,7 +165,10 @@ function App() {
       {/* DISPLAYS GEAR FOR SETTINGS */}
       <button
         className="presetSettings"
-        onClick={() => setMenuStatus(!menuStatus)}
+        onClick={() => {
+          setMenuStatus(!menuStatus);
+          console.log('menustatus:', menuStatus);
+        }}
       ></button>
       {!loggedIn && (
         <button
@@ -217,21 +220,21 @@ function App() {
       {/* LOG OUT BUTTON */}
       {loggedIn && <button id="log-out-button" onClick={logOut}></button>}
 
-      {menuStatus && (
+      {loggedIn && menuStatus && (
         <Customizer
           currUser={currUser}
           setMenuStatus={setMenuStatus}
           allSounds={allSounds}
         />
       )}
-      {loggedIn && (
+      {loggedIn && !menuStatus && (
         <Board
           preset={preset}
           allSounds={allSounds}
           onKeyPress={() => handleKeyPress()}
         />
       )}
-      {loggedIn && (
+      {loggedIn && !menuStatus && (
         <Settings defaultPresets={defaultPresets} setPreset={setPreset} />
       )}
     </div>

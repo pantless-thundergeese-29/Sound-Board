@@ -83,6 +83,7 @@ const Customizer = (props) => {
           <select
             onChange={(e) => handleChange(i, e)}
             id={`${i}dropdown`}
+            className="preset-dropdown"
             key={keyArr[i]}
             name="soundClips"
           >
